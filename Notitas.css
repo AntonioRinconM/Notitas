@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+:root {
+  --marco: #5b3a22;
+  --marco-oscuro: #432a18;
+  --dorado: #e8c15f;
+  --dorado-oscuro: #c99a3a;
+  --crema: #faf6ee;
+  --tinta: #3f2d1c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background: var(--crema);
+  color: var(--tinta);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Menú superior */
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--marco);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.menu-logo {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  color: var(--crema);
+}
+
+.menu-links {
+  display: flex;
+  gap: 20px;
+}
+
+.menu-links a {
+  color: var(--crema);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.menu-links a:hover { opacity: 1; }
+
+/* Contenedor centrador */
+.contenedor {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* Tarjeta del formulario */
+.tarjeta {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  padding: 32px 28px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+
+.tarjeta h1 {
+  font-family: 'Caveat', cursive;
+  font-size: 1.9rem;
+  margin: 0 0 18px;
+  color: var(--marco);
+}
+
+#texto {
+  width: 100%;
+  height: 120px;
+  resize: none;
+  border: 2px solid #e5ddcc;
+  border-radius: 10px;
+  padding: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--tinta);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+#texto:focus {
+  border-color: var(--dorado-oscuro);
+}
+
+#btnGuardar {
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: var(--dorado);
+  color: var(--marco-oscuro);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.15s ease;
+}
+
+#btnGuardar:hover { background: var(--dorado-oscuro); }
+#btnGuardar:active { transform: scale(0.98); }
+
+/* Ajustes para pantallas chicas */
+@media (max-width: 420px) {
+  .menu { justify-content: center; text-align: center; }
+  .tarjeta { padding: 24px 20px; }
+}

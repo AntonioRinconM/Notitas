@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+:root {
+  --marco: #5b3a22;
+  --marco-oscuro: #432a18;
+  --dorado: #e8c15f;
+  --dorado-oscuro: #c99a3a;
+  --corcho-1: #b5834f;
+  --corcho-2: #a2723f;
+  --crema: #faf6ee;
+  --tinta: #3f2d1c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--tinta);
+  background: var(--marco-oscuro);
+}
+
+/* Menú superior */
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--marco);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.menu-logo {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  color: var(--crema);
+}
+
+.menu-links {
+  display: flex;
+  gap: 20px;
+}
+
+.menu-links a {
+  color: var(--crema);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.menu-links a:hover { opacity: 1; }
+
+/* Tablón */
+#board {
+  position: relative;
+  min-height: calc(100vh - 64px); /* resta aprox. la altura del menú */
+  background-color: var(--corcho-1);
+  background-image: linear-gradient(var(--corcho-1), var(--corcho-2));
+  overflow: hidden;
+}
+
+/* Nota */
+.nota {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  padding: 24px 20px 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background-color: transparent;
+  background-size: cover;
+  box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.35);
+
+  font-family: 'Caveat', cursive;
+  color: var(--tinta);
+
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.nota:hover {
+  transform: scale(1.04);
+}
+
+/* Contenedor del texto dentro de la nota, para controlar el desborde */
+.nota span {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;       /* máximo de líneas antes de cortar con "..." */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  hyphens: auto;
+
+  font-size: clamp(0.95rem, 4vw, 1.3rem); /* se achica solo en pantallas chicas */
+  line-height: 1.2;
+}
+
+@keyframes caerComoHoja {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+  25% { transform: translate(-30px, 100px) rotate(-15deg); }
+  50% { transform: translate(30px, 200px) rotate(15deg); }
+  75% { transform: translate(-20px, 300px) rotate(-10deg); }
+  100% { transform: translate(0, 400px) rotate(0deg); opacity: 0; }
+}
+
+.nota.cayendo {
+  animation: caerComoHoja 1.5s ease-in forwards;
+  pointer-events: none;
+}
+
+@media (max-width: 420px) {
+  .menu { justify-content: center; text-align: center; }
+  .nota { width: 140px; height: 140px; }
+}
